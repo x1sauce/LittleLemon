@@ -41,6 +41,11 @@ class UserViewSet(viewsets.ViewSet):
         serializer.save()
         return Response(serializer.data)
 
+# class UserViewSet(viewsets.ModelViewSet):
+#     queryset = User.objects.all()
+#     serializer_class = UserSerializer
+#     permission_classes = [IsAuthenticated]
+
 # class bookingview(APIView):
 #     def get(self, request):
 #         items = Booking.objects.all()
@@ -55,6 +60,7 @@ class MenuItemView(generics.ListCreateAPIView):
 class SingleMenuItemView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Menu.objects.all()
     serializer_class = MenuSerializer
+    permission_classes = [IsAuthenticated]
 
 class BookingViewSet(viewsets.ModelViewSet):
     queryset = Booking.objects.all()
